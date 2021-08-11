@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS amazoff_db;
+
+CREATE DATABASE amazoff_db;
