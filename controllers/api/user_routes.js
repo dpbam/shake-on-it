@@ -6,10 +6,11 @@ const sequelize = require('../../config/connection');
 router.get('/', (req, res) => {
     //Access our User model and run .findAll() method
     User.findAll({
-        attributes: {
-            exclude: ['password'],
-            attributes: [sequelize.literal(`(SELECT AVG(star_rating) FROM rating WHERE user.id = rating.user_id)`), 'rating_score']
-        }
+        attributes: { exclude: ['password'] }
+        // attributes: [
+        //     'id', 'email', 'username',
+        //     [sequelize.literal(`(SELECT AVG(star_rating) FROM rating WHERE user.id = rating.user_id)`), 'rating_score']
+        // ]
     })
         .then(dbUserData => res.json(dbUserData))
         .catch(err => {
@@ -21,10 +22,7 @@ router.get('/', (req, res) => {
 //GET /api/users/1
 router.get('/:id', (req, res) => {
     User.findOne({
-        attributes: {
-            exclude: ['password'],
-            include: [sequelize.literal(`(SELECT AVG(star_rating) FROM rating WHERE user.id = rating.user_id)`)]
-        },
+        attributes: { exclude: ['password'] },
         where: {
             id: req.params.id
         },

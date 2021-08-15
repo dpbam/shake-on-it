@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-const { Post, User, Vote, Comment } = require('../../models');
+const { Post, User, Rating, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 //get all users
@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
         //Query configuration
         attributes: [
             'id', 'content', 'title', 'created_at',
-            [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
+            [sequelize.literal(`(SELECT AVG(star_rating) FROM rating WHERE post.id = rating.post_id)`), 'rating_score']
         ],
         order: [['created_at', 'DESC']],
         include: [
@@ -43,7 +43,7 @@ router.get('/:id', (req, res) => {
         },
         attributes: [
             'id', 'content', 'title', 'created_at',
-            [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
+            [sequelize.literal(`(SELECT AVG(star_rating) FROM rating WHERE user.id = rating.user_id)`), 'rating_score']
         ],
         include: [
             {
@@ -87,37 +87,13 @@ router.post('/', withAuth, (req, res) => {
         });
 });
 
-//PUT /api/posts/upvote
-router.put('/upvote', withAuth, (req, res) => {
-    // Vote.create({
-    //     user_id: req.body.user_id,
-    //     post_id: req.body.post_id
-    // })
-    //     .then(() => {
-    //         //then find the post we just voted on
-    //         return Post.findOne({
-    //             where: {
-    //                 id: req.body.post_id
-    //             },
-    //             attributes: [
-    //                 'id',
-    //                 'content',
-    //                 'title',
-    //                 'created_at',
-    //                 //user raw MySQL aggregate function query to get a count of how many votes the post has and return it under the name 'vote_count'
-    //                 [
-    //                     sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'),
-    //                     'vote_count'
-    //                 ]
-    //             ]
-    //         })
-    //     })
-
+//PUT /api/posts/rating
+router.put('/rating', withAuth, (req, res) => {
     //make sure the session exists first
     if (req.session) {
         //custom static method created in models/Post.js
         //pass session id along with all destructured properties on req.body
-        Post.upvote({ ...req.body, user_id: req.session.user_id }, { Vote, Comment, User })
+        Post.rating({ ...req.body, user_id: req.session.user_id }, { Rating, Comment, User })
             .then(updatedPostData => res.json(updatedPostData))
             .catch(err => {
                 console.log(err);
