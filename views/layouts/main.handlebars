@@ -1,38 +1,49 @@
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shake On It</title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shake On It</title>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
 
-  <body>
-    <div class="wrapper">
-      <header>
+<body>
+  <div class="wrapper">
+    <header>
+      <div id="body" class="grey lighten-2 valign-wrapper">
+        <div id="opty_hands" class="valign">
+          <div id="left-arm">
+            <div class="left-hand"><span>...</span></div>
+            <div class="left-shake"><span>_<br>_<br>_</span></div>
+          </div>
+          <div id="right-arm">
+            <div class="right-hand"><span>...</span></div>
+            <div class="right-shake"></div>
+          </div>
+        </div>
         <h1>
           <a href="/">Shake On It</a>
         </h1>
         <nav>
           {{#if loggedIn}}
-            <a href="/dashboard">dashboard</a>
-            <button id="logout" class="btn-no-style">logout</button>
+          <a href="/dashboard">dashboard</a>
+          <button id="logout" class="btn-no-style">logout</button>
           {{else}}
-            <a href="/login">login</a>
+          <a href="/login">login</a>
           {{/if}}
         </nav>
-      </header>
-      <main>
-        {{{body}}}
-      </main>
-      <footer>
-        Let's Shake On It next time!
-      </footer>
-    </div>
+    </header>
+    <main>
+      {{{body}}}
+    </main>
+    <footer>
+      Let's Shake On It next time!
+    </footer>
+  </div>
 
-    {{#if loggedIn}}
-      <script src="/javascript/logout.js"></script>
-    {{/if}}
-  </body>
+  {{#if loggedIn}}
+  <script src="/javascript/logout.js"></script>
+  {{/if}}
+</body>
 
 </html>
