@@ -217,22 +217,22 @@
 }
 
 .right-hand {
-  -webkit-animation: right-arm 0.5s linear infinite alternate;
+  animation: right-arm 0.5s linear infinite alternate;
 }
 
 .left-hand {
-  -webkit-animation: left-arm 0.5s linear infinite alternate;
+  animation: left-arm 0.5s linear infinite alternate;
 }
 
 .right-shake {
-  -webkit-animation: right-hand 0.5s linear infinite alternate;
+  animation: right-hand 0.5s linear infinite alternate;
 }
 
 .left-shake {
-  -webkit-animation: left-hand 0.5s linear infinite alternate;
+  animation: left-hand 0.5s linear infinite alternate;
 }
 
-@-webkit-keyframes right-arm {
+@keyframes right-arm {
   0% {
     top: 37%;
     transform: rotate(-15deg);
@@ -243,7 +243,7 @@
   }
 }
 
-@-webkit-keyframes left-arm {
+@keyframes left-arm {
   0% {
     top: 35%;
     transform: rotate(15deg);
@@ -254,7 +254,7 @@
   }
 }
 
-@-webkit-keyframes right-hand {
+@keyframes right-hand {
   0% {
     top: 52%;
   }
@@ -263,7 +263,7 @@
   }
 }
 
-@-webkit-keyframes left-hand {
+@keyframes left-hand {
   0% {
     top: 54%;
   }
