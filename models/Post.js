@@ -48,7 +48,11 @@ Post.init(
                 model: 'user',
                 key: 'id'
             }
-        }
+        },
+        photo: {
+            type: DataTypes.BLOB('long'),
+            allowNull: true
+        },
     },
     {
         sequelize,

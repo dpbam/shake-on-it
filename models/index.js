@@ -2,6 +2,7 @@ const User = require('./User');
 const Post = require('./Post');
 const Comment = require('./Comment');
 const Rating = require('./Rating');
+const Barter = require('./Barter');
 
 
 //create associations
