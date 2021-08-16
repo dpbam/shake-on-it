@@ -1,0 +1,90 @@
+const router = require('express').Router();
+const sequelize = require('../config/connection');
+const { Post, User, Comment, State, City } = require('../models');
+
+//render all posts
+router.get('/', (req, res) => {
+    Post.findAll({
+        attributes: [
+            'id',
+            'content',
+            'title',
+            'created_at',
+        ],
+        include: [
+            {
+                model: Comment,
+                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            },
+            {
+                model: User,
+                attributes: ['username']
+            },
+            {
+                model: City,
+                attributes: ['city']
+            },
+            {
+                model: State,
+                attributes: ['state']
+            }
+        ]
+    })
+        .then(dbPostData => {
+            const posts = dbPostData.map(post => post.get({ plain: true }));
+
+            res.render('homepage', {
+                posts, loggedIn: req.session.loggedIn
+            });
+        })
+        .catch(err => res.status(500).json(err));
+})
+
+//render login route
+router.get('/login', (req, res) => {
+    if (req.session.loggedIn) {
+        res.redirect('/');
+        return;
+    }
+    res.render('login');
+})
+
+//render single post
+router.get('/post/:id', (req, res) => {
+    Post.findOne({
+        where: {
+            id: req.params.id
+        },
+        attributes: [
+            'id', 'content', 'title', 'state_id', 'city_id', 'created_at',
+            [sequelize.literal(`(SELECT AVG(star_rating) FROM rating WHERE post.id = rating.post_id)`), 'rating_score']
+        ],
+        include: [
+            //inclue the Comment model here
+            {
+                model: Comment,
+                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            },
+            {
+                model: State,
+                attributes: ['state']
+            },
+            {
+                model: City,
+                attributes: ['city']
+            },
+            {
+                model: User,
+                attributes: ['username']
+            }
+        ]
+    })
+})
