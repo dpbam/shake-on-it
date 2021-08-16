@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
     Post.findAll({
         //Query configuration
         attributes: [
-            'id', 'content', 'title', 'photo', 'state_id', 'city_id', 'created_at',
+            'id', 'content', 'title', 'state_id', 'city_id', 'created_at',
             [sequelize.literal(`(SELECT AVG(star_rating) FROM rating WHERE post.id = rating.post_id)`), 'rating_score']
         ],
         order: [['created_at', 'DESC']],
@@ -50,7 +50,7 @@ router.get('/:id', (req, res) => {
             id: req.params.id
         },
         attributes: [
-            'id', 'content', 'title', 'photo', 'state_id', 'city_id', 'created_at',
+            'id', 'content', 'title', 'state_id', 'city_id', 'created_at',
             [sequelize.literal(`(SELECT AVG(star_rating) FROM rating WHERE user.id = rating.user_id)`), 'rating_score']
         ],
         include: [
@@ -95,8 +95,7 @@ router.post('/', withAuth, (req, res) => {
         content: req.body.content,
         user_id: req.session.user_id,
         state_id: req.body.state_id,
-        city_id: req.body.city_id,
-        photo: req.body.photo
+        city_id: req.body.city_id
     })
         .then(dbPostData => res.json(dbPostData))
         .catch(err => {
@@ -126,8 +125,7 @@ router.put('/:id', withAuth, (req, res) => {
             title: req.body.title,
             content: req.body.content,
             state_id: req.body.state_id,
-            city_id: req.body.city_id,
-            photo: req.body.photo
+            city_id: req.body.city_id
         },
         {
             where: {

@@ -50,19 +50,24 @@ Post.hasMany(Comment, {
 });
 
 Post.belongsTo(State, {
-    foreignKey: 'State_id'
+    foreignKey: 'State_id',
+
+
 });
 
 State.hasMany(Post, {
-    foreignKey: 'state_id'
+    foreignKey: 'state_id',
+
 })
 
 Post.belongsTo(City, {
-    foreignKey: 'city_id'
+    foreignKey: 'city_id',
+
 });
 
 City.hasMany(Post, {
-    foreignKey: 'city_id'
+    foreignKey: 'city_id',
+
 })
 
 module.exports = { User, Post, Comment, Rating, State, City };

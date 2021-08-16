@@ -49,10 +49,10 @@ Post.init(
                 key: 'id'
             }
         },
-        photo: {
-            type: DataTypes.BLOB('long'),
-            allowNull: true
-        },
+        // photo: {
+        //     type: DataTypes.BLOB('long'),
+        //     allowNull: true
+        // },
         state_id: {
             type: DataTypes.INTEGER,
             references: {
