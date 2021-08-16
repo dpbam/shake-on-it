@@ -2,5 +2,4 @@
 
 ## Description
 
-Shake On It. Bartering for the 21st century! Want a toaster? Paint my mailbox. I can clean your pool for this HD TV. 
-
+Shake On It. Bartering for the 21st century! Want a toaster? Paint my mailbox and it's yours.
