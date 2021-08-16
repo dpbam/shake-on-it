@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-const { Post, User, Rating, Comment } = require('../../models');
+const { Post, User, Rating, Comment, State, City } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 //get all users
@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
     Post.findAll({
         //Query configuration
         attributes: [
-            'id', 'content', 'title', 'created_at',
+            'id', 'content', 'title', 'photo', 'state_id', 'city_id', 'created_at',
             [sequelize.literal(`(SELECT AVG(star_rating) FROM rating WHERE post.id = rating.post_id)`), 'rating_score']
         ],
         order: [['created_at', 'DESC']],
@@ -21,6 +21,14 @@ router.get('/', (req, res) => {
                     model: User,
                     attributes: ['username']
                 }
+            },
+            {
+                model: State,
+                attributes: ['state']
+            },
+            {
+                model: City,
+                attributes: ['city']
             },
             {
                 model: User,
@@ -42,7 +50,7 @@ router.get('/:id', (req, res) => {
             id: req.params.id
         },
         attributes: [
-            'id', 'content', 'title', 'created_at',
+            'id', 'content', 'title', 'photo', 'state_id', 'city_id', 'created_at',
             [sequelize.literal(`(SELECT AVG(star_rating) FROM rating WHERE user.id = rating.user_id)`), 'rating_score']
         ],
         include: [
@@ -53,6 +61,14 @@ router.get('/:id', (req, res) => {
                     model: User,
                     attributes: ['username']
                 }
+            },
+            {
+                model: State,
+                attributes: ['state']
+            },
+            {
+                model: City,
+                attributes: ['city']
             },
             {
                 model: User,
@@ -74,11 +90,13 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', withAuth, (req, res) => {
-    //expects {title: 'Taskmaster goes public!', content: 'https://taskmaster.com/press', user_id: 1}
     Post.create({
         title: req.body.title,
         content: req.body.content,
-        user_id: req.session.user_id
+        user_id: req.session.user_id,
+        state_id: req.body.state_id,
+        city_id: req.body.city_id,
+        photo: req.body.photo
     })
         .then(dbPostData => res.json(dbPostData))
         .catch(err => {
@@ -93,7 +111,7 @@ router.put('/rating', withAuth, (req, res) => {
     if (req.session) {
         //custom static method created in models/Post.js
         //pass session id along with all destructured properties on req.body
-        Post.rating({ ...req.body, user_id: req.session.user_id }, { Rating, Comment, User })
+        Post.rating({ ...req.body, user_id: req.session.user_id }, { Rating, Comment, User, State, City })
             .then(updatedPostData => res.json(updatedPostData))
             .catch(err => {
                 console.log(err);
@@ -105,7 +123,11 @@ router.put('/rating', withAuth, (req, res) => {
 router.put('/:id', withAuth, (req, res) => {
     Post.update(
         {
-            title: req.body.title
+            title: req.body.title,
+            content: req.body.content,
+            state_id: req.body.state_id,
+            city_id: req.body.city_id,
+            photo: req.body.photo
         },
         {
             where: {

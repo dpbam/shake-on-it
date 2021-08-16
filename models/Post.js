@@ -53,6 +53,20 @@ Post.init(
             type: DataTypes.BLOB('long'),
             allowNull: true
         },
+        state_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'state',
+                key: 'id'
+            }
+        },
+        city_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'city',
+                key: 'id'
+            }
+        }
     },
     {
         sequelize,
