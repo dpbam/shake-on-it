@@ -1,15 +1,15 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Post, User, Comment, State, City } = require('../models');
+const { Post, User, Comment, Rating, City, State } = require('../models');
+const withAuth = require('../utils/auth');
 
-//render all posts
-router.get('/', (req, res) => {
+router.get('/', withAuth, (req, res) => {
     Post.findAll({
+        where: {
+            user_id: req.session.user_id
+        },
         attributes: [
-            'id',
-            'content',
-            'title',
-            'created_at',
+            'id', 'title', 'content', 'created_at',
             [
                 sequelize.literal(
                     `(SELECT AVG(num_rating) FROM rating WHERE post.id = rating.post_id)`
@@ -42,35 +42,25 @@ router.get('/', (req, res) => {
     })
         .then(dbPostData => {
             const posts = dbPostData.map(post => post.get({ plain: true }));
-
-            res.render('homepage', {
-                posts, loggedIn: req.session.loggedIn
-            });
         })
         .catch(err => res.status(500).json(err));
 })
 
-//render login route
-router.get('/login', (req, res) => {
-    if (req.session.loggedIn) {
-        res.redirect('/');
-        return;
-    }
-    res.render('login');
-})
-
-//render single post
-router.get('/posts/:id', (req, res) => {
+router.get('/edit/:id', (req, res) => {
     Post.findOne({
         where: {
             id: req.params.id
         },
         attributes: [
-            'id', 'content', 'title', 'state_id', 'city_id', 'created_at',
-            [sequelize.literal(`(SELECT AVG(star_rating) FROM rating WHERE post.id = rating.post_id)`), 'rating_score']
+            'id', 'title', 'content', 'created_at',
+            [
+                sequelize.literal(
+                    `(SELECT AVG(num_rating) FROM rating WHERE post.id = rating.post_id)`
+                ),
+                "rating_score",
+            ],
         ],
         include: [
-            //inclue the Comment model here
             {
                 model: Comment,
                 attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
@@ -80,16 +70,16 @@ router.get('/posts/:id', (req, res) => {
                 }
             },
             {
-                model: State,
-                attributes: ['state']
+                model: User,
+                attributes: ['username']
             },
             {
                 model: City,
                 attributes: ['city']
             },
             {
-                model: User,
-                attributes: ['username']
+                model: State,
+                attributes: ['state']
             }
         ]
     })
@@ -101,11 +91,13 @@ router.get('/posts/:id', (req, res) => {
 
             const post = dbPostData.get({ plain: true });
 
-            res.render('product', {
-                post, loggedIn: req.session.loggedIn
-            });
+            res.render('edit-post', { post, loggedIn: true });
         })
         .catch(err => res.status(500).json(err));
+})
+
+router.get('/add_post', (req, res) => {
+    res.render('add-post');
 })
 
 module.exports = router;

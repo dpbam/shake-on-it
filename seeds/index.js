@@ -3,7 +3,7 @@ const seedPosts = require("./post_seeds");
 const seedComments = require("./comment_seeds");
 const seedStates = require("./state_seeds");
 const seedCities = require("./city_seeds");
-const seedRating = require("./user_rating-seeds");
+const seedRating = require("./user_rating_seeds");
 
 const sequelize = require("../config/connection");
 
