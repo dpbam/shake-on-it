@@ -10,6 +10,7 @@ router.get('/', (req, res) => {
             'content',
             'title',
             'created_at',
+            'state_id', 'city_id',
             [
                 sequelize.literal(
                     `(SELECT AVG(num_rating) FROM rating WHERE post.id = rating.post_id)`

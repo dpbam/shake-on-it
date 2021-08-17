@@ -9,7 +9,7 @@ router.get('/', withAuth, (req, res) => {
             user_id: req.session.user_id
         },
         attributes: [
-            'id', 'title', 'content', 'created_at',
+            'id', 'title', 'content', 'created_at', 'state_id', 'city_id',
             [
                 sequelize.literal(
                     `(SELECT AVG(num_rating) FROM rating WHERE post.id = rating.post_id)`
@@ -47,13 +47,13 @@ router.get('/', withAuth, (req, res) => {
         .catch(err => res.status(500).json(err));
 })
 
-router.get('/edit/:id', (req, res) => {
+router.get('/edit/:id', withAuth, (req, res) => {
     Post.findOne({
         where: {
             id: req.params.id
         },
         attributes: [
-            'id', 'title', 'content', 'created_at',
+            'id', 'title', 'content', 'created_at', 'state_id', 'city_id',
             [
                 sequelize.literal(
                     `(SELECT AVG(num_rating) FROM rating WHERE post.id = rating.post_id)`
@@ -92,13 +92,9 @@ router.get('/edit/:id', (req, res) => {
 
             const post = dbPostData.get({ plain: true });
 
-            res.render('edit-post', { post, loggedIn: true });
+            res.render('edit_post', { post, loggedIn: true });
         })
         .catch(err => res.status(500).json(err));
-})
-
-router.get('/add_post', (req, res) => {
-    res.render('add-post');
 })
 
 module.exports = router;
