@@ -1,4 +1,3 @@
-/* start of handshake */
 #body {
   width: 100%;
   min-height: 100vh;
@@ -271,7 +270,6 @@
     top: 57%;
   }
 }
-/* end of handshake */
 
 /* User rating Dropdown Button */
 .userDropbtn {
