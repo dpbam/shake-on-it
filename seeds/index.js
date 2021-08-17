@@ -13,16 +13,16 @@ const seedAll = async () => {
   await seedUsers();
   console.log("--------------");
 
-  await seedPosts();
-  console.log("--------------");
-
-  await seedComments();
-  console.log("--------------");
-
   await seedStates();
   console.log("--------------");
 
   await seedCities();
+  console.log("--------------");
+
+  await seedPosts();
+  console.log("--------------");
+
+  await seedComments();
   console.log("--------------");
 
   await seedRating();
