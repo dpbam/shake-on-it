@@ -38,13 +38,7 @@ router.get('/edit/:id', (req, res) => {
             id: req.params.id
         },
         attributes: [
-            'id', 'title', 'content', 'created_at',
-            [
-                sequelize.literal(
-                    `(SELECT AVG(num_rating) FROM rating WHERE post.id = rating.post_id)`
-                ),
-                "rating_score",
-            ],
+            'id', 'title', 'content', 'created_at'
         ],
         include: [
             {
@@ -58,14 +52,6 @@ router.get('/edit/:id', (req, res) => {
             {
                 model: User,
                 attributes: ['username']
-            },
-            {
-                model: City,
-                attributes: ['city']
-            },
-            {
-                model: State,
-                attributes: ['state']
             }
         ]
     })
@@ -82,8 +68,8 @@ router.get('/edit/:id', (req, res) => {
         .catch(err => res.status(500).json(err));
 })
 
-router.get('/add_post', (req, res) => {
-    res.render('add-post');
+router.get('/product', (req, res) => {
+    res.render('product');
 })
 
 module.exports = router;
