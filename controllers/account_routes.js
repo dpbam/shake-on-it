@@ -9,13 +9,7 @@ router.get('/', withAuth, (req, res) => {
             user_id: req.session.user_id
         },
         attributes: [
-            'id', 'title', 'content', 'created_at',
-            [
-                sequelize.literal(
-                    `(SELECT AVG(num_rating) FROM rating WHERE post.id = rating.post_id)`
-                ),
-                "rating_score",
-            ],
+            'id', 'title', 'content', 'created_at'
         ],
         include: [
             {
@@ -29,14 +23,6 @@ router.get('/', withAuth, (req, res) => {
             {
                 model: User,
                 attributes: ['username']
-            },
-            {
-                model: City,
-                attributes: ['city']
-            },
-            {
-                model: State,
-                attributes: ['state']
             }
         ]
     })

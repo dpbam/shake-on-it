@@ -63,15 +63,7 @@ router.get("/:id", (req, res) => {
       "id",
       "content",
       "title",
-      "state_id",
-      "city_id",
       "created_at",
-      [
-        sequelize.literal(
-          `(SELECT AVG(num_rating) FROM rating WHERE user.id = rating.user_id)`
-        ),
-        "rating_score",
-      ],
     ],
     include: [
       {
@@ -81,14 +73,6 @@ router.get("/:id", (req, res) => {
           model: User,
           attributes: ["username"],
         },
-      },
-      {
-        model: State,
-        attributes: ["state"],
-      },
-      {
-        model: City,
-        attributes: ["city"],
       },
       {
         model: User,
@@ -113,9 +97,7 @@ router.post("/", withAuth, (req, res) => {
   Post.create({
     title: req.body.title,
     content: req.body.content,
-    user_id: req.session.user_id,
-    state_id: req.body.state_id,
-    city_id: req.body.city_id,
+    user_id: req.session.user_id
   })
     .then((dbPostData) => res.json(dbPostData))
     .catch((err) => {
@@ -132,7 +114,7 @@ router.put("/rating", withAuth, (req, res) => {
     //pass session id along with all destructured properties on req.body
     Post.rating(
       { ...req.body, user_id: req.session.user_id },
-      { Rating, Comment, User, State, City }
+      { Rating, Comment, User }
     )
       .then((updatedPostData) => res.json(updatedPostData))
       .catch((err) => {
@@ -146,9 +128,7 @@ router.put("/:id", withAuth, (req, res) => {
   Post.update(
     {
       title: req.body.title,
-      content: req.body.content,
-      state_id: req.body.state_id,
-      city_id: req.body.city_id,
+      content: req.body.content
     },
     {
       where: {
