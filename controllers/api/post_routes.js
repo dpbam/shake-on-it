@@ -164,7 +164,7 @@ router.put("/:id", withAuth, (req, res) => {
       title: req.body.title,
       content: req.body.content,
       state_id: req.body.state_id,
-      city_id: req.body.city_id
+      city_id: req.body.city_id,
     },
     {
       where: {
