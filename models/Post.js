@@ -59,6 +59,7 @@ Post.init(
     // },
     state_id: {
       type: DataTypes.INTEGER,
+      allowNull: true,
       references: {
         model: "state",
         key: "id",
@@ -66,6 +67,7 @@ Post.init(
     },
     city_id: {
       type: DataTypes.INTEGER,
+      allowNull: true,
       references: {
         model: "city",
         key: "id",
