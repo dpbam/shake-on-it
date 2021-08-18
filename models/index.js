@@ -2,8 +2,6 @@ const User = require("./User");
 const Post = require("./Post");
 const Comment = require("./Comment");
 const Rating = require("./Rating");
-const State = require("./State");
-const City = require("./City");
 
 //create associations
 User.hasMany(Post, {
@@ -48,20 +46,4 @@ Post.hasMany(Comment, {
   foreignKey: "post_id",
 });
 
-Post.belongsTo(State, {
-  foreignKey: "state_id",
-});
-
-State.hasMany(Post, {
-  foreignKey: "state_id",
-});
-
-Post.belongsTo(City, {
-  foreignKey: "city_id",
-});
-
-City.hasMany(Post, {
-  foreignKey: "city_id",
-});
-
-module.exports = { User, Post, Comment, Rating, State, City };
+module.exports = { User, Post, Comment, Rating };

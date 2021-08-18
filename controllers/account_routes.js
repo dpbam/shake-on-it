@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const sequelize = require("../config/connection");
-const { Post, User, Comment, Rating, City, State } = require("../models");
+const { Post, User, Comment, Rating } = require("../models");
 const withAuth = require("../utils/auth");
 
 router.get("/", withAuth, (req, res) => {
@@ -13,8 +13,6 @@ router.get("/", withAuth, (req, res) => {
       "title",
       "content",
       "created_at",
-      "state_id",
-      "city_id",
       [
         sequelize.literal(
           `(SELECT AVG(num_rating) FROM rating WHERE post.id = rating.post_id)`
@@ -30,18 +28,6 @@ router.get("/", withAuth, (req, res) => {
           model: User,
           attributes: ["username"],
         },
-      },
-      {
-        model: User,
-        attributes: ["username"],
-      },
-      {
-        model: City,
-        attributes: ["city"],
-      },
-      {
-        model: State,
-        attributes: ["state"],
       },
     ],
   })
@@ -64,8 +50,6 @@ router.get("/edit/:id", withAuth, (req, res) => {
       "title",
       "content",
       "created_at",
-      "state_id",
-      "city_id",
       [
         sequelize.literal(
           `(SELECT AVG(num_rating) FROM rating WHERE post.id = rating.post_id)`
@@ -85,14 +69,6 @@ router.get("/edit/:id", withAuth, (req, res) => {
       {
         model: User,
         attributes: ["username"],
-      },
-      {
-        model: City,
-        attributes: ["city"],
-      },
-      {
-        model: State,
-        attributes: ["state"],
       },
     ],
   })
