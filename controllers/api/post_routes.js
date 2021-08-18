@@ -68,7 +68,7 @@ router.get("/:id", (req, res) => {
       "created_at",
       [
         sequelize.literal(
-          `(SELECT AVG(num_rating) FROM rating WHERE user.id = rating.user_id)`
+          `(SELECT AVG(num_rating) FROM rating WHERE post.id = rating.post_id)`
         ),
         "rating_score",
       ],
@@ -148,7 +148,7 @@ router.put("/:id", withAuth, (req, res) => {
       title: req.body.title,
       content: req.body.content,
       state_id: req.body.state_id,
-      city_id: req.body.city_id,
+      city_id: req.body.city_id
     },
     {
       where: {
