@@ -2,9 +2,6 @@
     <div class="title">
         <h2>{{post.title}}</h2>
         <h4>Posted by {{post.user.username}} on {{format_date post.created_at}}</h4>
-        {{#if city && state}}
-        <h4>Location(City, State): {{city.city}}, {{state.state}}</h4>
-        {{/if}}
 
         {{#if rating_score}}
         <h4>Rating: {{rating_score}}</h4>
