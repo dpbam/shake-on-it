@@ -1,33 +1,7 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Post extends Model {
-  static rating(body, models) {
-    return models.Rating.create({
-      user_id: body.user_id,
-      post_id: body.post_id,
-      num_rating: body.num_rating,
-    }).then(() => {
-      return Post.findOne({
-        where: {
-          id: body.user_id,
-        },
-        attributes: [
-          "id",
-          "title",
-          "content",
-          "created_at",
-          [
-            sequelize.literal(
-              `(SELECT AVG(num_rating) FROM rating WHERE post.id = rating.post_id)`
-            ),
-            "rating_score",
-          ],
-        ],
-      });
-    });
-  }
-}
+class Post extends Model { }
 
 //define Post table columns and configuration
 Post.init(
@@ -59,6 +33,7 @@ Post.init(
     // },
     state_id: {
       type: DataTypes.INTEGER,
+      allowNull: true,
       references: {
         model: "state",
         key: "id",
@@ -66,6 +41,7 @@ Post.init(
     },
     city_id: {
       type: DataTypes.INTEGER,
+      allowNull: true,
       references: {
         model: "city",
         key: "id",

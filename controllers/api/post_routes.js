@@ -3,7 +3,7 @@ const sequelize = require("../../config/connection");
 const { Post, User, Rating, Comment, State, City } = require("../../models");
 const withAuth = require("../../utils/auth");
 
-//get all users
+//get all posts
 router.get("/", (req, res) => {
   Post.findAll({
     //Query configuration
@@ -64,6 +64,12 @@ router.get("/:id", (req, res) => {
       "content",
       "title",
       "created_at",
+      [
+        sequelize.literal(
+          `(SELECT AVG(num_rating) FROM rating WHERE post.id = rating.post_id)`
+        ),
+        "rating_score",
+      ],
     ],
     include: [
       {
@@ -107,22 +113,38 @@ router.post("/", withAuth, (req, res) => {
 });
 
 //PUT /api/posts/rating
-router.put("/rating", withAuth, (req, res) => {
-  //make sure the session exists first
-  if (req.session) {
-    //custom static method created in models/Post.js
-    //pass session id along with all destructured properties on req.body
-    Post.rating(
-      { ...req.body, user_id: req.session.user_id },
-      { Rating, Comment, User }
-    )
-      .then((updatedPostData) => res.json(updatedPostData))
-      .catch((err) => {
-        console.log(err);
-        res.status(400).json(err);
-      });
-  }
-});
+router.put("/:id/rating", withAuth, (req, res) => {
+  Rating.create({
+    user_id: req.session.user_id,
+    post_id: req.params.id,
+    num_rating: req.body.num_rating
+  })
+    .then(() => {
+      return Post.findOne({
+        where: {
+          id: req.params.id
+        },
+        attributes: [
+          "id",
+          "title",
+          "content",
+          "created_at",
+          [
+            sequelize.literal(
+              `(SELECT AVG(num_rating) FROM rating WHERE post.id = rating.post_id)`
+            ),
+            "rating_score",
+          ],
+        ]
+      })
+    })
+    .then(updatedPostData => res.json(updatedPostData))
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json(err);
+    });
+
+})
 
 router.put("/:id", withAuth, (req, res) => {
   Post.update(

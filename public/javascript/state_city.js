@@ -18,40 +18,24 @@ function stateList() {
         "Accept": "application/json"
     })
         .then((response) => {
-            state = response.body;
-            // console.log(statelist);
-            // const state_name = statelist.state_name;
-            // console.log(state_name);
-            // response.body.forEach(function (key) {
-            //     var [statelist] = response.body;
-            //     var state_name = statelist.state_name;
-            //     state.push(state_name)
-            // })
-            // console.log(state);
-
-            // console.log(response.body[0].state_name);
-            //     Object.keys(response.body.state_name).forEach(function (key) {
-            //         var single = response.body.state_name[key];
-            //         console.log(single);
-            //         state.push(single);
-
-
-            //     })
-            //     console.log(state);
+            response.body.forEach((object) => {
+                state.push(object.state_name);
+            })
+            console.log(state);
         });
 }
 stateList();
 
-var select = document.getElementById("selectNumber");
-for (var i = 0; i < state.length; i++) {
-    var opt = state[i];
-    var el = document.createElement("option");
-    el.textContent = opt;
-    el.value = opt;
-    select.appendChild(el);
-}
+// var select = document.getElementById("selectNumber");
+// for (var i = 0; i < state.length; i++) {
+//     var opt = state[i];
+//     var el = document.createElement("option");
+//     el.textContent = opt;
+//     el.value = opt;
+//     select.appendChild(el);
+// }
 
-let city = '';
+let city = [];
 function cityList() {
     var req = unirest("GET", "https://www.universal-tutorial.com/api/cities/" + state);
 
@@ -65,3 +49,12 @@ function cityList() {
 
 
 
+const obj = {
+    name: 'Jean-Luc Picard',
+    rank: 'Captain'
+};
+
+// Prints "name Jean-Luc Picard" followed by "rank Captain"
+Object.keys(obj).forEach(key => {
+    console.log(key, obj[key]);
+});
