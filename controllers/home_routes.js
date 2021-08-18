@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const sequelize = require("../config/connection");
-const { Post, User, Comment, State, City } = require("../models");
+const { Post, User, Comment } = require("../models");
 
 //render all posts
 router.get("/", (req, res) => {
@@ -10,8 +10,6 @@ router.get("/", (req, res) => {
       "content",
       "title",
       "created_at",
-      "state_id",
-      "city_id",
       [
         sequelize.literal(
           `(SELECT AVG(num_rating) FROM rating WHERE post.id = rating.post_id)`
@@ -26,20 +24,12 @@ router.get("/", (req, res) => {
         include: {
           model: User,
           attributes: ["username"],
-        },
+        }
       },
       {
         model: User,
-        attributes: ["username"],
-      },
-      {
-        model: City,
-        attributes: ["city"],
-      },
-      {
-        model: State,
-        attributes: ["state"],
-      },
+        attributes: ["username"]
+      }
     ],
   })
     .then((dbPostData) => {
@@ -72,8 +62,6 @@ router.get("/posts/:id", (req, res) => {
       "id",
       "content",
       "title",
-      "state_id",
-      "city_id",
       "created_at",
       [
         sequelize.literal(
@@ -83,7 +71,6 @@ router.get("/posts/:id", (req, res) => {
       ],
     ],
     include: [
-      //inclue the Comment model here
       {
         model: Comment,
         attributes: [
@@ -97,14 +84,6 @@ router.get("/posts/:id", (req, res) => {
           model: User,
           attributes: ["username"],
         },
-      },
-      {
-        model: State,
-        attributes: ["state"],
-      },
-      {
-        model: City,
-        attributes: ["city"],
       },
       {
         model: User,

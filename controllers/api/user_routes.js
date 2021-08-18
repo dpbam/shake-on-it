@@ -7,10 +7,6 @@ router.get("/", (req, res) => {
   //Access our User model and run .findAll() method
   User.findAll({
     attributes: { exclude: ["password"] },
-    // attributes: [
-    //     'id', 'email', 'username',
-    //     [sequelize.literal(`(SELECT AVG(num_rating) FROM rating WHERE user.id = rating.user_id)`), 'rating_score']
-    // ]
   })
     .then((dbUserData) => res.json(dbUserData))
     .catch((err) => {
