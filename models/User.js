@@ -36,7 +36,7 @@ User.init(
         len: [4],
       },
     },
-    post_id: {},
+    // post_id: {},
   },
   {
     hooks: {
