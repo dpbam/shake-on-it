@@ -7,11 +7,24 @@ Shake On It. Bartering for the 21st century! Want a toaster? Paint my mailbox an
 ## Table of Contents
 
 - [Installation](#installation)
+- [Usage](#usage)
 - [Tools Used](#tools)
 - [Challenges](#challenges)
 - [Questions](#questions)
 
 ## Installation
+
+npm install. This application requires the following NPM modules:
+
+- fs
+- Express
+- Path
+- bcrypt
+- Sequelize
+- dotenv
+- Express session
+
+## Usage
 
 Run from Heroku:
 
