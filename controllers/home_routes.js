@@ -83,75 +83,51 @@ router.get("/posts/:id", (req, res) => {
       ],
     ],
     include: [
-      //include the Comment model here
+      //inclue the Comment model here
       {
         model: Comment,
-        attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+        attributes: [
+          "id",
+          "comment_text",
+          "post_id",
+          "user_id",
+          "created_at",
+        ],
         include: {
           model: User,
           attributes: ["username"],
         },
-        attributes: [
-          "id",
-          "content",
-          "title",
-          "state_id",
-          "city_id",
-          "created_at",
-          [
-            sequelize.literal(
-              `(SELECT AVG(num_rating) FROM rating WHERE post.id = rating.post_id)`
-            ),
-            "rating_score",
-          ],
-        ],
-        include: [
-          //inclue the Comment model here
-          {
-            model: Comment,
-            attributes: [
-              "id",
-              "comment_text",
-              "post_id",
-              "user_id",
-              "created_at",
-            ],
-            include: {
-              model: User,
-              attributes: ["username"],
-            },
-          },
-          {
-            model: State,
-            attributes: ["state"],
-          },
-          {
-            model: City,
-            attributes: ["city"],
-          },
-          {
-            model: User,
-            attributes: ["username"],
-          },
-        ],
+      },
+      {
+        model: State,
+        attributes: ["state"],
+      },
+      {
+        model: City,
+        attributes: ["city"],
+      },
+      {
+        model: User,
+        attributes: ["username"],
       },
     ]
-      .then((dbPostData) => {
-        if (!dbPostData) {
-          res.status(404).json({ message: "No post found with this id" });
-          return;
-        }
+  })
+    .then((dbPostData) => {
+      if (!dbPostData) {
+        res.status(404).json({ message: "No post found with this id" });
+        return;
+      }
 
-        const post = dbPostData.get({ plain: true });
+      const post = dbPostData.get({ plain: true });
 
-        res.render("product", {
-          post,
-          loggedIn: req.session.loggedIn,
-        });
-      })
+      res.render("product", {
+        post,
+        loggedIn: req.session.loggedIn,
+      });
+    })
 
-      .catch((err) => res.status(500).json(err)),
-  });
+    .catch((err) => res.status(500).json(err));
 });
+
 
 module.exports = router;
