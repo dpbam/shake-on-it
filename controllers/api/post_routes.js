@@ -3,7 +3,7 @@ const sequelize = require("../../config/connection");
 const { Post, User, Rating, Comment, State, City } = require("../../models");
 const withAuth = require("../../utils/auth");
 
-//get all users
+//get all posts
 router.get("/", (req, res) => {
   Post.findAll({
     //Query configuration
@@ -126,6 +126,7 @@ router.post("/", withAuth, (req, res) => {
 
 //PUT /api/posts/rating
 router.put("/:id/rating", withAuth, (req, res) => {
+  console.log(req.body);
   //make sure the session exists first
   if (req.session) {
     //custom static method created in models/Post.js
