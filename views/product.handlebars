@@ -11,13 +11,13 @@
 </article>
 
 {{#if loggedIn}}
-<form class="comment-form">
+<form class="product-form">
     <div>
-        <textarea name="comment-body"></textarea>
+        <textarea name="product-body"></textarea>
     </div>
 
     <div>
-        <button type="submit">add comment</button>
+        <button type="-product-submit">add product description</button>
         <div class="ratingDropdown">
             <button onclick="myFunction()" class="userDropbtn">Dropdown</button>
             <div id="myDropdown" class="ratingDropdown-content">
@@ -29,6 +29,10 @@
             </div>
         </div>
     </div>
+    <div>
+        <h2>Your location</h2>
+    </div>
+    <div id="mapid"></div>
 </form>
 {{/if}}
 

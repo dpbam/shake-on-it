@@ -6,6 +6,9 @@
   <title>Shake On It</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin="" />
   <link rel="stylesheet" href="./stylesheets/style.css" />
   <link rel="stylesheet" href="./stylesheets/homepage.css" />
 </head>
@@ -33,7 +36,7 @@
           <a href="/account">acount</a>
           <button id="logout" class="btn-no-style">logout</button>
           {{else}}
-          <a href="/login">login</a>
+          <a href="/login">login/signup</a>
           {{/if}}
         </nav>
     </header>
@@ -46,6 +49,9 @@
   </div>
 
   {{#if loggedIn}}
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
   <script src="/javascript/logout.js"></script>
   {{/if}}
 </body>
