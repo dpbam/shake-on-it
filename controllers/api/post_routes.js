@@ -3,7 +3,7 @@ const sequelize = require("../../config/connection");
 const { Post, User, Rating, Comment, State, City } = require("../../models");
 const withAuth = require("../../utils/auth");
 
-//get all users
+//get all posts
 router.get("/", (req, res) => {
   Post.findAll({
     //Query configuration
@@ -68,7 +68,7 @@ router.get("/:id", (req, res) => {
       "created_at",
       [
         sequelize.literal(
-          `(SELECT AVG(num_rating) FROM rating WHERE user.id = rating.user_id)`
+          `(SELECT AVG(num_rating) FROM rating WHERE post.id = rating.post_id)`
         ),
         "rating_score",
       ],
@@ -125,13 +125,14 @@ router.post("/", withAuth, (req, res) => {
 });
 
 //PUT /api/posts/rating
-router.put("/rating", withAuth, (req, res) => {
+router.put("/:id/rating", withAuth, (req, res) => {
+  console.log(req.body);
   //make sure the session exists first
   if (req.session) {
     //custom static method created in models/Post.js
     //pass session id along with all destructured properties on req.body
     Post.rating(
-      { ...req.body, user_id: req.session.user_id },
+      { ...req.body, post_id: req.params.id, user_id: req.session.user_id },
       { Rating, Comment, User, State, City }
     )
       .then((updatedPostData) => res.json(updatedPostData))
