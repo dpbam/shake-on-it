@@ -1,13 +1,13 @@
 #body {
   width: 100%;
-  min-height: 100vh;
+  min-height: 15vh;
 }
 
 #opty_hands {
   background: #febd25;
   margin-left: 40%;
-  width: 25vw;
-  height: 25vw;
+  width: 15vw;
+  height: 15vw;
   font-size: 1.5vw;
   border-radius: 50%;
   position: relative;
