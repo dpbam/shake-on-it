@@ -2,81 +2,110 @@ const { Post } = require("../models");
 
 const postdata = [
   {
-    title: "Toaster",
-    content: "https://buzzfeed.com/in/imperdiet/et/commodo/vulputate.png",
+    title: "Vapormax Plus Astro Edition -- In Stock",
+    content: `Details
+              Condition
+              New
+              Vapormax Plus Astro Edition
+              New With Box. Email: 00000@gmail.com`,
     user_id: 10,
   },
   {
-    title: "Morbi non quam nec dui luctus rutrum.",
-    content: "https://nasa.gov/donec.json",
+    title: "🏺⚱️iPad 10.2” 128GB, 8. Gen.- Entrega el mismo día con opciones de pago convenientes 🗣",
+    content: `Condition
+              New
+              Screen Size
+              10.2”
+                  Internal Memory
+              128 GB
+              🤩Apple - iPad  8.Gen. 128GB - 2020🤩 
+              contact me: 55555@gmail.com or text: 555-555-0000`,
     user_id: 8,
   },
   {
-    title:
-      "Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue.",
-    content:
-      "https://europa.eu/parturient/montes/nascetur/ridiculus/mus/etiam/vel.aspx",
+    title: "Lawn Mowing Service",
+    content: "As title said: Lawn Mowing Service. Contact me: 555-555-5555",
     user_id: 1,
   },
   {
-    title: "Nunc purus.",
-    content: "http://desdev.cn/enim/blandit/mi.jpg",
+    title: "House Remodel",
+    content: "Home remodeling services include: kitchen, bathroom, flooring, concrete, roof, etc contact me at 832-000-0000",
     user_id: 4,
   },
   {
-    title: "Pellentesque eget nunc.",
-    content: "http://google.ca/nam/nulla/integer.aspx",
+    title: "Tutoring Services",
+    content: "Offering tutoring services from elementary to high school, contact me at 281-000-0000",
     user_id: 7,
   },
   {
-    title: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
-    content: "https://stanford.edu/consequat.png",
+    title: "House Cleaning",
+    content: "House clearning services, contact me at 281-000-1111",
     user_id: 4,
   },
   {
-    title: "In hac habitasse platea dictumst.",
-    content: "http://edublogs.org/non/ligula/pellentesque.js",
-    user_id: 1,
-  {
-    title: "Morbi non quam nec dui luctus rutrum.",
-    content: "http://ucla.edu/consequat/nulla.html",
+    title: "Daycare",
+    content: "Providing daycare for parents, contact via email: 020202@gmail.com or 832-555-0000",
     user_id: 1,
   },
   {
-    title: "Duis ac nibh.",
-    content: "http://theguardian.com/dui/vel/nisl/duis/ac/nibh.aspx",
+    title: "Roof Repair",
+    content: "Roof repair service, contact at 832-555-4444",
+    user_id: 1,
+  },
+  {
+    title: "AC Service",
+    content: "We are here to help to bring you cool in a hot day, please contact us at 512-565-8888",
     user_id: 9,
   },
   {
-    title: "Curabitur at ipsum ac tellus semper interdum.",
-    content: "https://reverbnation.com/ligula/sit.jpg",
+    title: "Dozer,excavator,forestry mulching, dirtwork",
+    content: `has the solutions to all your land needs. 
+    We are a veteran owned and family operated company. 
+    We have the experience and knowledge to get your project done the 
+    right way the first time. We have references that can vouch for the 
+    quality of our work and experience. We specialize in land clearing and 
+    site development. Fully insured Services were offer include
+    Forestry mulching,
+    Fence line clearing.
+    Selective clearing.
+    Pasture clearing.
+    Excavating for site development.
+    Driveways.
+    Pads.
+    Ponds.
+    Culverts.
+    Concrete.
+    And much more.
+    Call today 832-666-4848`,
     user_id: 5,
   },
   {
-    title: "In hac habitasse platea dictumst.",
-    content: "http://china.com.cn/lectus/vestibulum.json",
+    title: "Yard Work/Handy Man/General Labor",
+    content: `I have lots of experience and excellent reviews. 
+    I travel throughout Houston and to surrounding areas. Please call 156-151-1515 `,
     user_id: 3,
   },
   {
-    title: "Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo.",
-    content:
-      "http://networksolutions.com/nam/ultrices/libero/non/mattis/pulvinar.json",
+    title: "FENCE INSTALLATION & REPAIR",
+    content: `FENCING INSTALLATION/REPAIR, GATE REPAIR/INSTALLATION , FENCE WASH/PAINT LAWN MOWING, MULCHING, SOD INSTALLATION
+              Contact 202-123-1234`,
     user_id: 10,
   },
   {
-    title: "Donec dapibus.",
-    content: "https://instagram.com/ac/neque/duis/bibendum/morbi/non.xml",
+    title: "Tractor mowing",
+    content: "Mowing services 936-000-0000",
     user_id: 8,
   },
   {
-    title: "Nulla tellus.",
-    content: "https://lycos.com/natoque/penatibus/et.html",
+    title: "🌲TREE REMOVAL,TREE TRIMMING,STUMP GRINDING ",
+    content: `Quality, professional and affordable service
+We specialize in tree removal, tree trimming, stump grinding, pruning
+Contact 512-000-0101`,
     user_id: 3,
   },
   {
-    title:
-      "Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo.",
-    content: "https://gmpg.org/lorem.jpg",
+    title: "LANDSCAPING SERVICE",
+    content: "LAWN SERVICE: weekly & biweekly, contact 512-111-1111",
     user_id: 3,
   },
   {
