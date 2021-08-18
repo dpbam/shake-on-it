@@ -7,15 +7,19 @@
 </article>
 
 {{#if loggedIn}}
-<form class="comment-form">
+<form class="product-form">
     <div>
-        <textarea name="comment-body"></textarea>
+        <textarea name="product-body"></textarea>
     </div>
 
     <div>
-        <button type="submit">add comment</button>
+        <button type="product-submit">add product description</button>
         <button type="button" class="upvote-btn">upvote</button>
     </div>
+    <div>
+        <h2>Your location</h2>
+    </div>
+    <div id="mapid"></div>
 </form>
 {{/if}}
 
