@@ -68,7 +68,7 @@ router.get('/posts/:id', (req, res) => {
         },
         attributes: [
             'id', 'content', 'title', 'state_id', 'city_id', 'created_at',
-            [sequelize.literal(`(SELECT AVG(star_rating) FROM rating WHERE post.id = rating.post_id)`), 'rating_score']
+            [sequelize.literal(`(SELECT AVG(num_rating) FROM rating WHERE post.id = rating.post_id)`), 'rating_score']
         ],
         include: [
             //inclue the Comment model here
