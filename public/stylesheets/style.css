@@ -276,6 +276,11 @@ page-title {
   text-align: center;
 }
 
+div.page-title {
+  padding: 2rem;
+  text-align: center;
+}
+
 /* User rating Dropdown Button */
 .userDropbtn {
   background-color: #3498db;
