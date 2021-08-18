@@ -126,22 +126,37 @@ router.post("/", withAuth, (req, res) => {
 
 //PUT /api/posts/rating
 router.put("/:id/rating", withAuth, (req, res) => {
-  console.log(req.body);
-  //make sure the session exists first
-  if (req.session) {
-    //custom static method created in models/Post.js
-    //pass session id along with all destructured properties on req.body
-    Post.rating(
-      { ...req.body, post_id: req.params.id, user_id: req.session.user_id },
-      { Rating, Comment, User, State, City }
-    )
-      .then((updatedPostData) => res.json(updatedPostData))
-      .catch((err) => {
-        console.log(err);
-        res.status(400).json(err);
-      });
-  }
-});
+  Rating.create({
+    user_id: req.session.user_id,
+    post_id: req.params.id,
+    num_rating: req.body.num_rating
+  })
+    .then(() => {
+      return Post.findOne({
+        where: {
+          id: req.params.id
+        },
+        attributes: [
+          "id",
+          "title",
+          "content",
+          "created_at",
+          [
+            sequelize.literal(
+              `(SELECT AVG(num_rating) FROM rating WHERE post.id = rating.post_id)`
+            ),
+            "rating_score",
+          ],
+        ]
+      })
+    })
+    .then(updatedPostData => res.json(updatedPostData))
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json(err);
+    });
+
+})
 
 router.put("/:id", withAuth, (req, res) => {
   Post.update(

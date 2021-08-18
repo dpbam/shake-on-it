@@ -2,6 +2,13 @@
     <div class="title">
         <h2>{{post.title}}</h2>
         <h4>Posted by {{post.user.username}} on {{format_date post.created_at}}</h4>
+        {{#if city && state}}
+        <h4>Location(City, State): {{city.city}}, {{state.state}}</h4>
+        {{/if}}
+
+        {{#if rating_score}}
+        <h4>Rating: {{rating_score}}</h4>
+        {{/if}}
     </div>
     <p>{{post.content}}</p>
 </article>
@@ -14,7 +21,16 @@
 
     <div>
         <button type="submit">add comment</button>
-        <button type="button" class="upvote-btn">upvote</button>
+        <div class="ratingDropdown">
+            <button onclick="myFunction()" class="userDropbtn">Dropdown</button>
+            <div id="myDropdown" class="ratingDropdown-content">
+                <a href="#">5 - Very good</a>
+                <a href="#">4 - Pretty good</a>
+                <a href="#">3 - Not bad</a>
+                <a href="#">2 - Ok</a>
+                <a href="#">1 - Terrible</a>
+            </div>
+        </div>
     </div>
 </form>
 {{/if}}
@@ -23,4 +39,5 @@
 
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
+<script src="/javascript/user-rating.js"></script>
 {{/if}}
