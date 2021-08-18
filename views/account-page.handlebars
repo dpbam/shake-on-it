@@ -1,24 +1,24 @@
 <div>
-  <h1>Account Page</h1>
-  <button>Go to posts</button>
+    <h1>Account Page</h1>
+    <button>Go to posts</button>
 
-  {{! to add a new product you'll need javascript }}
+    {{! to add a new product you'll need javascript }}
 </div>
 
 <ul class="post-list">
-  {{#each posts as |post|}}
+    {{#each posts as |post|}}
     <li>
-      {{!-- {{>post-info post}} --}}
-      <article class="post">
-        <div class="title">
-          <a href="/posts/{{id}}" class="edit-link">
-            <h2>{{title}}</h2>
-          </a>
-          <h4>Posted by {{user.username}} on {{format_date created_at}}</h4>
-          {{state_id}}
-        </div>
-        <p>{{content}}</p>
-      </article>
+        {{!-- {{>post-info post}} --}}
+        <article class="post">
+            <div class="title">
+                <a href="/posts/{{id}}" class="edit-link">
+                    <h2>{{title}}</h2>
+                </a>
+                <h4>Posted by {{user.username}} on {{format_date created_at}}</h4>
+                {{state_id}}
+            </div>
+            <p>{{content}}</p>
+        </article>
     </li>
-  {{/each}}
+    {{/each}}
 </ul>
