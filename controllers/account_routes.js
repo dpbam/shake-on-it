@@ -29,10 +29,6 @@ router.get("/", withAuth, (req, res) => {
           attributes: ["username"],
         },
       },
-      {
-        model: State,
-        attributes: ["state"],
-      },
     ],
   })
     .then((dbPostData) => {

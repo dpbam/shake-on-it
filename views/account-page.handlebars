@@ -7,18 +7,17 @@
 
 <ul class="post-list">
   {{#each posts as |post|}}
-    <li>
-      {{!-- {{>post-info post}} --}}
-      <article class="post">
-        <div class="title">
-          <a href="/posts/{{id}}" class="edit-link">
-            <h2>{{title}}</h2>
-          </a>
-          <h4>Posted by {{user.username}} on {{format_date created_at}}</h4>
-          {{state_id}}
-        </div>
-        <p>{{content}}</p>
-      </article>
-    </li>
+  <li>
+    {{!-- {{>post-info post}} --}}
+    <article class="post">
+      <div class="title">
+        <a href="/posts/{{id}}" class="edit-link">
+          <h2>{{title}}</h2>
+        </a>
+        <h4>Posted by {{user.username}} on {{format_date created_at}}</h4>
+      </div>
+      <p>{{content}}</p>
+    </article>
+  </li>
   {{/each}}
 </ul>
