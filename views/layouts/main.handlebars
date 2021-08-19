@@ -4,11 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shake On It</title>
-  <link rel="stylesheet" href="./stylesheets/style.css" />
-  <link rel="stylesheet" href="./stylesheets/homepage.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin="" />
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <link rel="stylesheet" href="/stylesheets/homepage.css" />
 </head>
 
 <body>
+  <h1>Shake On It</h1>
   <div class="wrapper">
     <header>
       <div id="body" class="grey lighten-2 valign-wrapper">
@@ -22,15 +28,15 @@
             <div class="right-shake"></div>
           </div>
         </div>
-        <h1>
-          <a href="/">Shake On It</a>
-        </h1>
+        <h2>
+          <a href="/">Take me to ALL the posts!</a>
+        </h2>
         <nav>
           {{#if loggedIn}}
-          <a href="/dashboard">dashboard</a>
+          <a href="/account">account</a>
           <button id="logout" class="btn-no-style">logout</button>
           {{else}}
-          <a href="/login">login</a>
+          <a href="/login">login/signup</a>
           {{/if}}
         </nav>
     </header>
@@ -41,6 +47,19 @@
       Let's Shake On It next time!
     </footer>
   </div>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+
+  <!-- Start of LiveChat (www.livechatinc.com) code -->
+  <script>
+    window.__lc = window.__lc || {};
+    window.__lc.license = 13051380;
+    ; (function (n, t, c) { function i(n) { return e._h ? e._h.apply(null, n) : e._q.push(n) } var e = { _q: [], _h: null, _v: "2.0", on: function () { i(["on", c.call(arguments)]) }, once: function () { i(["once", c.call(arguments)]) }, off: function () { i(["off", c.call(arguments)]) }, get: function () { if (!e._h) throw new Error("[LiveChatWidget] You can't use getters before load."); return i(["get", c.call(arguments)]) }, call: function () { i(["call", c.call(arguments)]) }, init: function () { var n = t.createElement("script"); n.async = !0, n.type = "text/javascript", n.src = "https://cdn.livechatinc.com/tracking.js", t.head.appendChild(n) } }; !n.__lc.asyncInit && e.init(), n.LiveChatWidget = n.LiveChatWidget || e }(window, document, [].slice))
+  </script>
+  <noscript><a href="https://www.livechatinc.com/chat-with/13051380/" rel="nofollow">Chat with us</a>, powered by <a
+      href="https://www.livechatinc.com/?welcome" rel="noopener nofollow" target="_blank">LiveChat</a></noscript>
+  <!-- End of LiveChat code -->
 
   {{#if loggedIn}}
   <script src="/javascript/logout.js"></script>

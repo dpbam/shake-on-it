@@ -1,0 +1,27 @@
+<div class="page-title">
+  <h2>Account Page</h2>
+  <button type="click" class="btn-no-style"><a href="/account/create-post">Make new product post</a></button>
+
+  {{! to add a new product you'll need javascript }}
+</div>
+
+{{#if posts.length}}
+<ul class="post-list">
+  {{#each posts as |post|}}
+  <li>
+    {{!-- {{>post-info post}} --}}
+    <article class="post">
+      <div class="title">
+        <a href="/account/edit/{{id}}" class="edit-link">
+          <h2>{{title}}</h2>
+        </a>
+        <h4>Posted by {{user.username}} on {{format_date created_at}}</h4>
+      </div>
+      {{#if post.rating_score}}
+      <h4>Rating: {{post.rating_score}}</h4>
+      {{/if}}
+    </article>
+  </li>
+  {{/each}}
+</ul>
+{{/if}}

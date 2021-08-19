@@ -2,6 +2,11 @@
     <div class="title">
         <h2>{{post.title}}</h2>
         <h4>Posted by {{post.user.username}} on {{format_date post.created_at}}</h4>
+
+        {{#if post.rating_score}}
+        <h4>Rating: {{post.rating_score}}</h4>
+        {{/if}}
+
     </div>
     <p>{{post.content}}</p>
 </article>
@@ -13,9 +18,24 @@
     </div>
 
     <div>
-        <button type="submit">add comment</button>
-        <button type="button" class="upvote-btn">upvote</button>
+        <button type="submit">Comment</button>
     </div>
+
+    <div id="rating-option">
+        <select id="rating">
+            <option value="" disabled selected hidden>Rate this!</option>
+            <option value="5">5</option>
+            <option value="4">4</option>
+            <option value="3">3</option>
+            <option value="2">2</option>
+            <option value="1">1</option>
+        </select>
+    </div>
+    <div>
+        <h2>Your location</h2>
+    </div>
+    <div id="mapid"></div>
+
 </form>
 {{/if}}
 
@@ -23,4 +43,7 @@
 
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
+
+<script src="/javascript/user-rating.js"></script>
+
 {{/if}}
