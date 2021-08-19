@@ -21,16 +21,11 @@
   "dependencies": {
     "bcrypt": "^5.0.1",
     "connect-session-sequelize": "^7.1.1",
-    "country-state-city": "^3.0.1",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-handlebars": "^5.3.3",
     "express-session": "^1.17.2",
     "mysql2": "^2.3.0",
-    "sendbird": "^3.0.154",
-    "sendbird-uikit": "^2.3.2-alpha",
-    "sequelize": "^6.6.5",
-    "unirest": "^0.6.0",
-    "usa-states": "^0.0.5"
+    "sequelize": "^6.6.5"
   }
 }

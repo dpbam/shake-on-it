@@ -117,13 +117,12 @@ router.put("/:id/rating", withAuth, (req, res) => {
         attributes: [
           "id",
           "title",
-          "content",
-          "created_at",
+          "content"
           [
-            sequelize.literal(
-              `(SELECT AVG(num_rating) FROM rating WHERE post.id = rating.post_id)`
-            ),
-            "rating_score",
+          sequelize.literal(
+            `(SELECT AVG(num_rating) FROM rating WHERE post.id = rating.post_id)`
+          ),
+          "rating_score"
           ],
         ]
       })
