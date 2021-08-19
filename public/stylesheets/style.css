@@ -333,6 +333,14 @@ div.page-title {
 
 /* end of User Rating Dropdown */
 
+.create-btn {
+  background-color: #2980b9;
+}
+
+.create-btn:hover {
+  background-color: lightskyblue;
+}
+
 /* map css */
 
 #mapid {
