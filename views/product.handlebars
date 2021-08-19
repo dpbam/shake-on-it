@@ -13,22 +13,32 @@
 {{#if loggedIn}}
 <form class="product-form">
     <div>
-        <textarea name="product-body"></textarea>
+        <textarea name="comment-body"></textarea>
     </div>
 
     <div>
-        <button type="submit">Add product description? or should this be Add Comment?</button>
+        <button type="submit">Add Comment</button>
 
-        <div class="ratingDropdown">
-            <button onclick="ratingFunction()" class="userDropbtn">Rate this thing!</button>
-            <div id="myDropdown" class="ratingDropdown-content">
-                <a href="#">5 - Very good</a>
-                <a href="#">4 - Pretty good</a>
-                <a href="#">3 - Not bad</a>
-                <a href="#">2 - Ok</a>
-                <a href="#">1 - Terrible</a>
-            </div>
+        <div>
+            <select id="rating">
+                <option value="5">5 - Very good</option>
+                <option value="4">4 - Pretty good</option>
+                <option value="3">3 - Not bad</option>
+                <option value="2">2 - Ok</option>
+                <option value="1">1 - Terrible</option>
+            </select>
         </div>
+
+        {{!-- <div class="ratingDropdown">
+            <button onclick="ratingFunction()" class="userDropbtn">Rate this thing!</button>
+            <div id="rating" class="ratingDropdown-content">
+                <a href="5">5 - Very good</a>
+                <a href="4">4 - Pretty good</a>
+                <a href="3">3 - Not bad</a>
+                <a href="2">2 - Ok</a>
+                <a href="1">1 - Terrible</a>
+            </div>
+        </div> --}}
     </div>
     <div>
         <h2>Your location</h2>
