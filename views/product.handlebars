@@ -11,25 +11,26 @@
 </article>
 
 {{#if loggedIn}}
-<form class="product-form">
+<form class="comment-form">
     <div>
-        <textarea name="product-body"></textarea>
+        <textarea name="comment-body"></textarea>
     </div>
 
     <div>
-        <button type="text">Comment</button>
+        <button type="submit">Comment</button>
+    </div>
 
-        <div class="ratingDropdown">
-            <button onclick="ratingFunction()" class="userDropbtn">Rate this thing!</button>
-            <div id="myDropdown" class="ratingDropdown-content">
-                <li value="5"><a>5 - Very good</a></li>
-                <li value="4"><a>4 - Pretty good</a></li>
-                <li value="3"><a>3 - Not bad</a></li>
-                <li value="2"><a>2 - Ok</a></li>
-                <li value="1"><a>1 - Terrible</a></li>
-            </div>
+    <div class="ratingDropdown">
+        <button onclick="ratingFunction()" class="userDropbtn">Rate this thing!</button>
+        <div id="myDropdown" class="ratingDropdown-content">
+            <li value="5"><a>5 - Very good</a></li>
+            <li value="4"><a>4 - Pretty good</a></li>
+            <li value="3"><a>3 - Not bad</a></li>
+            <li value="2"><a>2 - Ok</a></li>
+            <li value="1"><a>1 - Terrible</a></li>
         </div>
     </div>
+
     {{!-- <div>
         <select id="rating">
             <option value="5">5</option>
