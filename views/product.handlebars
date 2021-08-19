@@ -11,34 +11,35 @@
 </article>
 
 {{#if loggedIn}}
-<form class="product-form">
+<form class="comment-form">
     <div>
         <textarea name="comment-body"></textarea>
     </div>
 
     <div>
-        <button type="submit">Add Comment</button>
+        <button type="submit">Comment</button>
+    </div>
 
-        <div>
-            <select id="rating">
-                <option value="5">5 - Very good</option>
-                <option value="4">4 - Pretty good</option>
-                <option value="3">3 - Not bad</option>
-                <option value="2">2 - Ok</option>
-                <option value="1">1 - Terrible</option>
-            </select>
+    {{!-- <div class="ratingDropdown">
+        <button onclick="ratingFunction()" class="userDropbtn">Rate this thing!</button>
+        <div id="myDropdown" class="ratingDropdown-content">
+            <li value="5"><a>5 - Very good</a></li>
+            <li value="4"><a>4 - Pretty good</a></li>
+            <li value="3"><a>3 - Not bad</a></li>
+            <li value="2"><a>2 - Ok</a></li>
+            <li value="1"><a>1 - Terrible</a></li>
         </div>
+    </div> --}}
 
-        {{!-- <div class="ratingDropdown">
-            <button onclick="ratingFunction()" class="userDropbtn">Rate this thing!</button>
-            <div id="rating" class="ratingDropdown-content">
-                <a href="5">5 - Very good</a>
-                <a href="4">4 - Pretty good</a>
-                <a href="3">3 - Not bad</a>
-                <a href="2">2 - Ok</a>
-                <a href="1">1 - Terrible</a>
-            </div>
-        </div> --}}
+    <div id="rating-option">
+        <select id="rating">
+            <option value="" disabled selected hidden>Rate this!</option>
+            <option value="5">5</option>
+            <option value="4">4</option>
+            <option value="3">3</option>
+            <option value="2">2</option>
+            <option value="1">1</option>
+        </select>
     </div>
     <div>
         <h2>Your location</h2>
