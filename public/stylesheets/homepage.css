@@ -113,11 +113,11 @@ main {
 }
 
 .delete-post-btn {
-  background-color: #d41414;
+  background-color: #e91414;
 }
 
 .delete-post-btn:hover {
-  background-color: #ff643d;
+  background-color: #ee5b36;
 }
 
 .post {
