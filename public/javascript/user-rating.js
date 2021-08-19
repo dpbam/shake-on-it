@@ -6,6 +6,7 @@ function ratingFunction() {
 
 // Close the dropdown menu if the user clicks outside of it
 window.onclick = function (event) {
+
   if (!event.target.matches(".userDropbtn")) {
     var dropdowns = document.getElementsByClassName("ratingDropdown-content");
     var i;
