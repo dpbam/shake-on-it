@@ -6,6 +6,7 @@
         {{#if post.rating_score}}
         <h4>Rating: {{post.rating_score}}</h4>
         {{/if}}
+
     </div>
     <p>{{post.content}}</p>
 </article>
@@ -34,6 +35,7 @@
         <h2>Your location</h2>
     </div>
     <div id="mapid"></div>
+
 </form>
 {{/if}}
 
@@ -41,5 +43,7 @@
 
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
+
 <script src="/javascript/user-rating.js"></script>
+
 {{/if}}

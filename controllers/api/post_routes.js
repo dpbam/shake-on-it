@@ -140,6 +140,7 @@ router.put("/:id", withAuth, (req, res) => {
     {
       title: req.body.title,
       content: req.body.content
+
     },
     {
       where: {

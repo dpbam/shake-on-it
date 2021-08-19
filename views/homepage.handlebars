@@ -9,10 +9,12 @@
                 </a>
                 <h4>Posted by {{user.username}} on {{format_date created_at}}</h4>
 
+
                 {{#if post.rating_score}}
                 <h4>Rating: {{post.rating_score}}</h4>
                 {{/if}}
             </div>
+
         </article>
     </li>
     {{/each}}
