@@ -50,22 +50,20 @@ button:hover {
 
 main {
   flex: 1;
- 
 }
 
 main {
   flex: 1;
-   padding: 2% 4%;
-  background-color: rgba(248,151,31,255);
-    height: auto;
-    padding-top: 100px;
-    padding-bottom: 100px;
-    background-image: url(/sites/all/themes/utexas/assets/section_2_diagonals.svg);
-    background-repeat: no-repeat;
-    background-position: bottom;
-    background-size: cover;
+  padding: 2% 4%;
+  background-color: rgba(248, 151, 31, 255);
+  height: auto;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-image: url(/sites/all/themes/utexas/assets/section_2_diagonals.svg);
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
 }
-
 
 textarea,
 input {
@@ -103,7 +101,7 @@ form label {
 }
 
 header {
-  background-color: rgba(248,151,31,255);
+  background-color: rgba(248, 151, 31, 255);
   border-bottom: 1px solid #ccc;
   display: flex;
   justify-content: space-between;
@@ -121,8 +119,6 @@ header h2 {
   color: white;
 }
 
-
-
 .btn-no-style {
   background: none;
   border: none;
@@ -133,7 +129,7 @@ header h2 {
   font-size: 100%;
   font-weight: bold;
   transition: color 0.1s;
-  margin-left: 16px;
+  margin-left: 6px;
 }
 
 main .page-title button {
@@ -163,7 +159,7 @@ main .page-title button:hover {
   border: 1px solid #bf5700;
 }
 
-.title a{
+.title a {
   background-color: #bf5700;
 }
 
