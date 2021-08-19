@@ -28,6 +28,7 @@
     "express-session": "^1.17.2",
     "mysql2": "^2.3.0",
     "sendbird": "^3.0.154",
+    "sendbird-uikit": "^2.3.2-alpha",
     "sequelize": "^6.6.5",
     "unirest": "^0.6.0",
     "usa-states": "^0.0.5"

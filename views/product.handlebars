@@ -20,7 +20,7 @@
         <button type="submit">Comment</button>
     </div>
 
-    <div class="ratingDropdown">
+    {{!-- <div class="ratingDropdown">
         <button onclick="ratingFunction()" class="userDropbtn">Rate this thing!</button>
         <div id="myDropdown" class="ratingDropdown-content">
             <li value="5"><a>5 - Very good</a></li>
@@ -29,17 +29,18 @@
             <li value="2"><a>2 - Ok</a></li>
             <li value="1"><a>1 - Terrible</a></li>
         </div>
-    </div>
+    </div> --}}
 
-    {{!-- <div>
+    <div id="rating-option">
         <select id="rating">
+            <option value="" disabled selected hidden>Rate this!</option>
             <option value="5">5</option>
             <option value="4">4</option>
             <option value="3">3</option>
             <option value="2">2</option>
             <option value="1">1</option>
         </select>
-    </div> --}}
+    </div>
     <div>
         <h2>Your location</h2>
     </div>
