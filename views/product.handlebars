@@ -2,20 +2,38 @@
     <div class="title">
         <h2>{{post.title}}</h2>
         <h4>Posted by {{post.user.username}} on {{format_date post.created_at}}</h4>
+
+        {{#if post.rating_score}}
+        <h4>Rating: {{post.rating_score}}</h4>
+        {{/if}}
     </div>
     <p>{{post.content}}</p>
 </article>
 
 {{#if loggedIn}}
-<form class="comment-form">
+<form class="product-form">
     <div>
-        <textarea name="comment-body"></textarea>
+        <textarea name="product-body"></textarea>
     </div>
 
     <div>
-        <button type="submit">add comment</button>
-        <button type="button" class="upvote-btn">upvote</button>
+        <button type="submit">Add product description? or should this be Add Comment?</button>
+
+        <div class="ratingDropdown">
+            <button onclick="ratingFunction()" class="userDropbtn">Rate this thing!</button>
+            <div id="myDropdown" class="ratingDropdown-content">
+                <a href="#">5 - Very good</a>
+                <a href="#">4 - Pretty good</a>
+                <a href="#">3 - Not bad</a>
+                <a href="#">2 - Ok</a>
+                <a href="#">1 - Terrible</a>
+            </div>
+        </div>
     </div>
+    <div>
+        <h2>Your location</h2>
+    </div>
+    <div id="mapid"></div>
 </form>
 {{/if}}
 
@@ -23,4 +41,5 @@
 
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
+<script src="/javascript/user-rating.js"></script>
 {{/if}}
