@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const sequelize = require("../../config/connection");
-const { Post, User, Rating, Comment, State, City } = require("../../models");
+const { Post, User, Rating, Comment } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 //get all posts
@@ -11,8 +11,6 @@ router.get("/", (req, res) => {
       "id",
       "content",
       "title",
-      "state_id",
-      "city_id",
       "created_at",
       [
         sequelize.literal(
@@ -31,14 +29,6 @@ router.get("/", (req, res) => {
           model: User,
           attributes: ["username"],
         },
-      },
-      {
-        model: State,
-        attributes: ["state"],
-      },
-      {
-        model: City,
-        attributes: ["city"],
       },
       {
         model: User,
@@ -63,8 +53,6 @@ router.get("/:id", (req, res) => {
       "id",
       "content",
       "title",
-      "state_id",
-      "city_id",
       "created_at",
       [
         sequelize.literal(
@@ -81,14 +69,6 @@ router.get("/:id", (req, res) => {
           model: User,
           attributes: ["username"],
         },
-      },
-      {
-        model: State,
-        attributes: ["state"],
-      },
-      {
-        model: City,
-        attributes: ["city"],
       },
       {
         model: User,
@@ -114,8 +94,6 @@ router.post("/", withAuth, (req, res) => {
     title: req.body.title,
     content: req.body.content,
     user_id: req.session.user_id,
-    state_id: req.body.state_id,
-    city_id: req.body.city_id,
   })
     .then((dbPostData) => res.json(dbPostData))
     .catch((err) => {
@@ -162,9 +140,7 @@ router.put("/:id", withAuth, (req, res) => {
   Post.update(
     {
       title: req.body.title,
-      content: req.body.content,
-      state_id: req.body.state_id,
-      city_id: req.body.city_id
+      content: req.body.content
     },
     {
       where: {

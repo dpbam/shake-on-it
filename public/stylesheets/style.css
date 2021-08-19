@@ -148,7 +148,7 @@
   z-index: 1;
   font-weight: 300;
   color: rgba(0, 0, 0, 0.1);
-  font-size: 3em;
+  /* font-size: 3em; */
   line-height: 25%;
 }
 
@@ -271,6 +271,16 @@
   }
 }
 
+page-title {
+  padding: 2rem;
+  text-align: center;
+}
+
+div.page-title {
+  padding: 2rem;
+  text-align: center;
+}
+
 /* User rating Dropdown Button */
 .userDropbtn {
   background-color: #3498db;
@@ -322,3 +332,11 @@
 }
 
 /* end of User Rating Dropdown */
+
+/* map css */
+
+#mapid {
+  height: 180px;
+}
+
+/* end of map css */
