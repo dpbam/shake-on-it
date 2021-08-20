@@ -39,6 +39,9 @@
           <a href="/login">login/signup</a>
           {{/if}}
         </nav>
+        <div>
+          <input id="searchbar" type="text" name="search" placeholder="Search products">
+        </div>
     </header>
     <main>
       {{{body}}}
@@ -64,6 +67,7 @@
   {{#if loggedIn}}
   <script src="/javascript/logout.js"></script>
   {{/if}}
+  <script src="/javascript/searchbar.js"></script>
 </body>
 
 </html>
