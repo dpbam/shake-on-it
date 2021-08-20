@@ -119,7 +119,7 @@ header h2 {
   color: white;
 }
 
-.btn-no-style {
+.logout-btn .new-post-btn {
   background: none;
   border: none;
   padding: 0;
@@ -136,7 +136,12 @@ main .page-title button {
   background-color: #bf5700;
 }
 
-.btn-no-style:hover {
+.new-post-btn:hover {
+  background: none;
+  color: #ee5b36;
+}
+
+.logout-btn:hover {
   background: none;
   color: #ee5b36;
 }
@@ -179,10 +184,6 @@ main .page-title button:hover {
 .comment {
   padding: 1%;
   margin-bottom: 1%;
-}
-
-.comment:nth-child(odd) {
-  background-color: #fff5eb;
 }
 
 .comment .meta {
