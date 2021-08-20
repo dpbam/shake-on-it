@@ -103,7 +103,7 @@ router.post("/", withAuth, (req, res) => {
 });
 
 //PUT /api/posts/rating
-router.put("/:id/rating", withAuth, (req, res) => {
+router.put('/:id/rating', withAuth, (req, res) => {
   Rating.create({
     user_id: req.session.user_id,
     post_id: req.params.id,
@@ -117,17 +117,21 @@ router.put("/:id/rating", withAuth, (req, res) => {
         attributes: [
           "id",
           "title",
-          "content"
+          "content",
           [
-          sequelize.literal(
-            `(SELECT AVG(num_rating) FROM rating WHERE post.id = rating.post_id)`
-          ),
-          "rating_score"
+            sequelize.literal(`(SELECT AVG(num_rating) FROM rating WHERE post.id = rating.post_id)`), "rating_score"
           ],
         ]
       })
     })
-    .then(updatedPostData => res.json(updatedPostData))
+    .then(updatedPostData => {
+      console.log(updatedPostData)
+      if (!updatedPostData) {
+        res.status(404).json({ message: "No post found with this id" });
+        return;
+      }
+      res.json(updatedPostData)
+    })
     .catch((err) => {
       console.log(err);
       res.status(400).json(err);

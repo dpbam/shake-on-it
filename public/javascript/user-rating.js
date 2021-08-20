@@ -1,14 +1,13 @@
 async function ratingFormHandler(event) {
   event.preventDefault();
 
-  const select = document.querySelector("#rating");
+  const select = document.querySelector('#rating');
   const option = select.options[select.selectedIndex].value;
-  console.log('response', option);
+
   const id = window.location.toString().split("/")[
     window.location.toString().split("/").length - 1
   ];
 
-  console.log('response', id);
   if (option) {
     console.log('response', option);
     const response = await fetch(`/api/posts/${id}/rating`, {
@@ -21,9 +20,8 @@ async function ratingFormHandler(event) {
         'Content-Type': 'application/json',
       },
     });
-    console.log('response', response);
+
     if (response.ok) {
-      console.log('response', response);
       document.location.reload();
     } else {
       alert(response.statusText);
