@@ -157,6 +157,7 @@ main .page-title button:hover {
   margin-bottom: 2%;
   line-height: 150%;
   border: 1px solid #bf5700;
+  display: block;
 }
 
 .title a {

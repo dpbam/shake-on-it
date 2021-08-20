@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Post extends Model {}
+class Post extends Model { }
 
 //define Post table columns and configuration
 Post.init(
@@ -27,10 +27,10 @@ Post.init(
         key: "id",
       },
     },
-    // photo: {
-    //     type: DataTypes.BLOB('long'),
-    //     allowNull: true
-    // },
+    photo: {
+      type: DataTypes.BLOB('long'),
+      allowNull: true
+    },
   },
   {
     sequelize,
