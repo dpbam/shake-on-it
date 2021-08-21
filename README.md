@@ -1,7 +1,5 @@
 # shake-on-it
 
-<img width="1211" alt="Screen Shot 2021-08-19 at 8 12 33 PM" src="https://user-images.githubusercontent.com/82355287/130168541-dd356f47-4a0e-467c-a8e1-1074ebb7ffaa.png">
-
 ## Description
 
 Shake On It. Bartering for the 21st century! Want a toaster? Paint my mailbox and it's yours.
@@ -28,7 +26,7 @@ npm install. This application requires the following NPM modules:
 
 ## Usage
 
-Run from Heroku: https://nameless-taiga-03231.herokuapp.com
+Run from Heroku: https://nameless-taiga-03231.herokuapp.com/
 
 ## Tools Used
 
@@ -47,6 +45,7 @@ Run from Heroku: https://nameless-taiga-03231.herokuapp.com
 - Heroku
 - JawsDB
 - GitHub
+- LiveChatInc
 
 ## Challenges
 
