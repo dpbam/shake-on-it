@@ -119,7 +119,7 @@ header h2 {
   color: white;
 }
 
-.logout-btn {
+.btn-no-style {
   background: none;
   border: none;
   padding: 0;
@@ -130,34 +130,17 @@ header h2 {
   font-weight: bold;
   transition: color 0.1s;
   margin-left: 6px;
-}
-
-.new-post-btn {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  text-decoration: none;
-  color: white;
-  font-size: 100%;
-  font-weight: bold;
-  transition: color 0.1s;
-  margin-left: 6px;
-}
-
-.new-post-btn:hover {
-  background: none;
-  color: #ee5b36;
-}
-
-.logout-btn:hover {
-  background: none;
-  color: #ee5b36;
 }
 
 main .page-title button {
   background-color: #bf5700;
 }
+
+.btn-no-style:hover {
+  background: none;
+  color: #ee5b36;
+}
+
 main .page-title button:hover {
   background-color: #bf5700;
 }
@@ -196,6 +179,10 @@ main .page-title button:hover {
 .comment {
   padding: 1%;
   margin-bottom: 1%;
+}
+
+.comment:nth-child(odd) {
+  background-color: #fff5eb;
 }
 
 .comment .meta {
