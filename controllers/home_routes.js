@@ -17,6 +17,7 @@ router.get("/", (req, res) => {
         "rating_score",
       ],
     ],
+    order: [["created_at", "DESC"]],
     include: [
       {
         model: Comment,
