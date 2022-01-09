@@ -180,6 +180,7 @@ main .page-title button:hover {
 
 .title h2 {
   background-color: #bf5700;
+  padding-left: 1rem;
 }
 
 .title a {
@@ -192,8 +193,16 @@ main .page-title button:hover {
   padding: 5px;
 }
 
-h4 {
-  margin: 0 0 1rem 2rem;
+.post-content {
+  padding-left: 3rem;
+}
+
+.posted-by {
+  padding: 0 0 1rem 1rem;
+}
+
+.post-rating {
+  padding-left: 2rem;
 }
 
 .edit-link {
@@ -208,6 +217,7 @@ h4 {
 .comment {
   padding: 1%;
   margin-bottom: 1%;
+  color: black;
 }
 
 .comment:nth-child(odd) {

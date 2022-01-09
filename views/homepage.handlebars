@@ -9,10 +9,10 @@
                 </a>
             </div>
             <div class="posted-by">
-                <h4>Posted by {{user.username}} on {{format_date created_at}}</h4>
+                <h4 class="posted-by">Posted by {{user.username}} on {{format_date created_at}}</h4>
             
                 {{#if post.rating_score}}
-                <h4>Rating: {{post.rating_score}}</h4>
+                <h4 class="post-rating">Rating: {{post.rating_score}}</h4>
                 {{/if}}
             </div>
 
