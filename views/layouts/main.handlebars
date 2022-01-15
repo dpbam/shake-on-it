@@ -34,17 +34,19 @@
             <div class="right-shake"></div>
           </div>
         </div>
-        <h2>
-          <a href="/">Take me to ALL the posts!</a>
-        </h2>
-        <nav>
-          {{#if loggedIn}}
-          <a href="/account">account</a>
-          <button id="logout" class="btn-no-style">logout</button>
-          {{else}}
-          <a href="/login">login/signup</a>
-          {{/if}}
-        </nav>
+        <div class="all-posts-login-signup">
+          <h2>
+            <a href="/">Take me to ALL the posts!</a>
+          </h2>
+          <nav>
+            {{#if loggedIn}}
+            <a href="/account">account</a>
+            <button id="logout" class="btn-no-style">logout</button>
+            {{else}}
+            <a href="/login">login/signup</a>
+            {{/if}}
+          </nav>
+        </div>
     </header>
     <main>
       {{{body}}}
