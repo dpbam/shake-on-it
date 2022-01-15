@@ -15,6 +15,8 @@ html {
 nav {
   text-align: center;
   font-size: 20px;
+  /* float: right; */
+  margin-right: 3rem;
 }
 
 a {
@@ -53,28 +55,28 @@ button:hover {
   flex-direction: column;
 }
 
-main {
-  flex: 1;
+.post-list li {
+  height: 12rem;
 }
 
-#body {
+#header-body {
   margin: 3rem;
 }
 
 main {
-  flex: 1;
+  /* flex: 1; */
+  display: block;
+  align-items: center;
   /* padding: 2% 4%; */
   background-color: rgba(248, 151, 31, 255);
   height: auto;
-  padding: 6rem 3rem 6rem 1rem;
-  /* padding-top: 100px;
-  padding-bottom: 100px;
-  padding-right: 3rem; */
-  /* padding-left: 1rem; */
+  padding: 6rem 3rem 6rem 2rem;
   /* background-image: url(/sites/all/themes/utexas/assets/section_2_diagonals.svg);
   background-repeat: no-repeat;
   background-position: bottom;
   background-size: cover; */
+  /* margin-right: auto;
+  margin-left: auto; */
 }
 
 textarea,
@@ -108,21 +110,24 @@ form label {
   width: 100%;
   min-height: 100%;
   margin: 0 auto;
-  display: flex;
+  /* display: flex;
+  justify-content: space-evenly; */
   flex-direction: column;
+  /* float: right; */
 }
 
 header {
   background-color: rgba(248, 151, 31, 255);
-  border-bottom: 1px solid #ccc;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  /* border-bottom: 1px solid #ccc; */
+  /* display: flex; */
+  /* justify-content: space-between; */
+  /* align-items: center; */
   padding: 0 1%;
 }
 
 h1 {
   font-family: 'Poppins', sans-serif;
+  font-size: 4rem;
   text-transform: uppercase;
   text-align: center;
   background-color: #bf5700;
@@ -132,6 +137,14 @@ h1 {
 
 .logo {
   box-shadow: 0 2x 4x black;
+  background-color: #bf5700;
+}
+
+.logo h2 {
+  text-align: center;
+  font-style: italic;
+  font-size: 1.5rem;
+  padding-bottom: 1rem;
 }
 
 header h2 {
@@ -176,9 +189,7 @@ main .page-title button:hover {
 .post {
   margin-bottom: 10%;
   line-height: 150%;
-  /* border: 1px solid #bf5700; */
   box-shadow: 2px 4px 4px #bf5700;
-  padding-bottom: 1rem;
 }
 
 .title h2 {

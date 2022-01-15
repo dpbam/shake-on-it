@@ -1,13 +1,13 @@
 #body {
   width: 100%;
-  min-height: 15vh;
+  min-height: 100vh;
 }
 
 #opty_hands {
   background: #febd25;
-  margin-left: 42%;
-  width: 15vw;
-  height: 15vw;
+  margin-left: 40%;
+  width: 25vw;
+  height: 25vw;
   font-size: 1.5vw;
   border-radius: 50%;
   position: relative;
@@ -40,7 +40,7 @@
 }
 
 .left-hand::after {
-  content: "";
+  content: '';
   position: absolute;
   display: block;
   left: 100%;
@@ -54,7 +54,7 @@
 }
 
 .left-hand::before {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   border-top-right-radius: 3px;
@@ -91,7 +91,7 @@
 }
 
 .right-hand::after {
-  content: "";
+  content: '';
   position: absolute;
   display: block;
   right: 100%;
@@ -105,7 +105,7 @@
 }
 
 .right-hand::before {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   border-top-left-radius: 3px;
@@ -153,7 +153,7 @@
 }
 
 .right-shake::after {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   width: 50%;
@@ -168,7 +168,7 @@
 }
 
 .left-shake::after {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   width: 60%;
@@ -183,7 +183,7 @@
 }
 
 .left-shake::before {
-  content: "|||";
+  content: '|||';
   font-weight: 500;
   text-indent: 0.25em;
   color: rgba(0, 0, 0, 0.1);
@@ -206,7 +206,7 @@
 }
 
 .right-shake::before {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   width: 5%;
@@ -276,8 +276,8 @@
   text-align: center;
 }
 
-.page-title h2{
-   background-color: #bf5700;
+.page-title h2 {
+  background-color: #bf5700;
 }
 
 div.page-title {
