@@ -3,8 +3,7 @@
 ## Description
 
 Shake On It. Bartering for the 21st century! Want a toaster? Paint my mailbox and it's yours.
-![image](https://user-images.githubusercontent.com/81452611/130340436-200bbebf-1e7f-4a58-ab56-c6ddf8d6d4de.png)
-
+![shakeonit](https://user-images.githubusercontent.com/82355287/152451439-67374502-c061-46c5-8bd0-b3249596b69b.png)
 
 ## Table of Contents
 
